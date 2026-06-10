@@ -1,0 +1,2 @@
+TRAINERS_ENDPOINT = '/trainers'
+POKEMONS_ENDPOINT = '/pokemons'
