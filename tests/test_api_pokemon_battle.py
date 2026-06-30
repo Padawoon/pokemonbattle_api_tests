@@ -3,7 +3,7 @@ from http import HTTPStatus
 from jsonschema.validators import validate
 from config.api_config import BASE_URL
 from data.api_endpoints import BATTLE_ENDPOINT
-from helpers.file_helpers import load_battles_schema
+from helpers.file_helpers import load_schema
 
 
 class TestBattle:
@@ -14,5 +14,5 @@ class TestBattle:
         )
         assert response.status_code == HTTPStatus.OK
         response_body = response.json()
-        template = load_battles_schema("battles.yml")
+        template = load_schema("battles.yml")
         validate(response_body, template)
