@@ -4,7 +4,7 @@ import pytest
 import requests
 import os
 
-from config.api_config import BASE_URL
+from config.api_config import BASE_URL, LAVKA_BASE_URL
 from data.api_endpoints import POKEMONS_ENDPOINT, TRAINERS_ENDPOINT
 from helpers.api_helpers import ApiSession
 
@@ -115,3 +115,17 @@ def create_pokemon(api_session, knockout_trainer_pokemons):
     )
     response_body = response.json()
     return response_body
+
+@pytest.fixture()
+def check_and_cancel_premium(api_session):
+    def _cancel_if_premium():
+        response = api_session.get(BASE_URL + "/me")
+        assert response.status_code == HTTPStatus.OK
+        body = response.json()
+        if body.get("data")[0].get("is_premium"):
+            prem_cancellation_response = api_session.post(LAVKA_BASE_URL + "/cancel_premium")
+            assert prem_cancellation_response.status_code == HTTPStatus.OK
+
+    _cancel_if_premium()
+    yield
+    _cancel_if_premium()
