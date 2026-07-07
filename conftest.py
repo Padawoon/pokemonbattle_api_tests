@@ -1,1 +1,1 @@
-pytest_plugins = ['fixtures.api_fixures', 'fixtures.cleanup_and_create']
+pytest_plugins = ['fixtures.api_fixures']
