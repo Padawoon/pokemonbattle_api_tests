@@ -7,3 +7,7 @@ __pycache__/
 
 #ide files
 .idea/
+
+# allure reports and results
+allure-results/
+allure-report/
