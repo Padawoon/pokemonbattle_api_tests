@@ -25,7 +25,7 @@ class TestPokemonCrud:
             assert response_body['message'] == 'Информация о покемоне обновлена'
 
     @allure.title("Получение обновленных данных покемона")
-    @pytest.mark.skip('А чёт пофиг сейчас поменялось или нет')
+    @pytest.mark.skip('Сегодня нам пофиг поменялось или нет')
     def test_get_updated_pokemon_success(self, api_session, create_pokemon):
         payload = {'trainer_id': 64411}
         pokemon_id = create_pokemon.get('id')
