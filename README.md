@@ -43,7 +43,7 @@
 │   ├── test_api_pokemon_battle.py
 │   ├── test_api_pokemon_crud.py
 │   └── test_api_pokemon_trainers.py
-├── .env                       # токен тренера и тестовые данные карт
+├── .env.example               # шаблон переменных окружения
 ├── conftest.py                # подключение плагина с фикстурами
 ├── index.zip                  # пример сгенерированного Allure-отчёта (single file)
 ├── pytest.ini                 # addopts и маркеры
@@ -117,7 +117,11 @@ pip install -r requirements.txt
 
 ## Переменные окружения
 
-Тестам нужен файл `.env` в корне проекта. Его подхватывает `pytest-dotenv` при запуске pytest:
+Тестам нужен файл `.env` в корне проекта. Его подхватывает `pytest-dotenv` при запуске pytest. Файл добавлен в `.gitignore` и не попадает в репозиторий. Шаблон с перечнем переменных лежит в `.env.example`:
+
+```bash
+cp .env.example .env   # и заполни значения
+```
 
 ```dotenv
 # тренер
